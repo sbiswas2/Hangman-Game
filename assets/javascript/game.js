@@ -23,25 +23,40 @@ var lettersGuessed = [];
 	// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
 	document.onkeyup = function(event) {
         var userGuess = event.key;
-        //check alphabet
-        for (var k = 0; k < alphabet.length; k++) {
-        	if (userGuess === alphabet[k]){
-        		console.log(userGuess);
-        		lettersGuessed.push(userGuess);
-        		console.log(lettersGuessed);
-        		guesses--;
-        		console.log(guesses);
-        		alphabet.splice(alphabet.indexOf(userGuess), 1);		
-	    			//check phrase
-				    for (var j = 0; j < blankWord.length; j++) {
-				    	if (userGuess === blankWord[j]) {
-				    		answerSpaces[j] = userGuess;
-				    		letters--;
-				    		console.log(answerSpaces);
-				    		console.log(letters);
-				    	}
-				    }
+        userGuess = userGuess.toLowerCase();
+
+		if (guesses > 0) {
+		        if (letters > 0) {
+				        //check alphabet
+				        for (var k = 0; k < alphabet.length; k++) {
+				        	if (userGuess === alphabet[k]){
+				        		console.log(userGuess);
+				        		lettersGuessed.push(userGuess);
+				        		console.log(lettersGuessed);
+				        		guesses--;
+				        		console.log(guesses);
+				        		alphabet.splice(alphabet.indexOf(userGuess), 1);		
+					    			//check phrase
+								    for (var j = 0; j < blankWord.length; j++) {
+								    	if (userGuess === blankWord[j]) {
+								    		answerSpaces[j] = userGuess;
+								    		letters--;
+								    		console.log(answerSpaces);
+								    		console.log(letters);
+								    		}
+								    	}
+								}
+							}	
+					} else {
+						console.log ("You win");
+					}
+
+			} else {
+				console.log("You Lose");
 			}
-		}
-	}
+		};
+
+
+
+
 
