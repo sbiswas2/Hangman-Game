@@ -20,6 +20,9 @@ var answerSpaces = [];
 
 var lettersGuessed = [];
 
+console.log(wins);
+console.log(losses);
+
 	// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
 	document.onkeyup = function(event) {
         var userGuess = event.key;
@@ -48,15 +51,17 @@ var lettersGuessed = [];
 								}
 							}	
 					} else {
+						wins++;
+						console.log(wins);
 						console.log ("You win");
 					}
 
 			} else {
+				losses++;
+				console.log(losses);
 				console.log("You Lose");
 			}
 		};
-
-
 
 
 
