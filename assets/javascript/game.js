@@ -6,7 +6,7 @@ var wins = 0;
 var losses = 0;
 var guesses = 9;
 
-// Randomly chooses a choice from the phrase array. This is the Computer's word for User to guess.
+// Computer randomly chooses a choice from the phrase array for User to guess.
 var blankWord = phrase[Math.floor(Math.random() * phrase.length)];
 
 
@@ -18,20 +18,26 @@ var answerSpaces = [];
 		console.log(answerSpaces);
 		var letters = blankWord.length;
 
-// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
+
+	// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
 	document.onkeyup = function(event) {
         var userGuess = event.key;
+        //check alphabet
         for (var k = 0; k < alphabet.length; k++) {
         	if (userGuess === alphabet[k]){
         		console.log(userGuess);
+        		guesses--;
+        		console.log(guesses);
+        		//check phrase
 			    for (var j = 0; j < blankWord.length; j++) {
 			    	if (userGuess === blankWord[j]) {
 			    		answerSpaces[j] = userGuess;
 			    		letters--;
 			    		console.log(answerSpaces);
+			    		console.log(letters);
 			    	}
 			    }
 			}
 		}
-
 	}
+
