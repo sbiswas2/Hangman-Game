@@ -18,17 +18,21 @@ var answerSpaces = [];
 		console.log(answerSpaces);
 		var letters = blankWord.length;
 
+var lettersGuessed = [];
 
 	// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
 	document.onkeyup = function(event) {
         var userGuess = event.key;
+        
         //check alphabet
         for (var k = 0; k < alphabet.length; k++) {
         	if (userGuess === alphabet[k]){
         		console.log(userGuess);
+        		lettersGuessed.push(userGuess);
+        		console.log(lettersGuessed);
         		guesses--;
-        		console.log(guesses);
-        		//check phrase
+        		console.log(guesses);		
+    			//check phrase
 			    for (var j = 0; j < blankWord.length; j++) {
 			    	if (userGuess === blankWord[j]) {
 			    		answerSpaces[j] = userGuess;
