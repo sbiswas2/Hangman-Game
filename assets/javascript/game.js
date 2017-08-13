@@ -18,15 +18,20 @@ var answerSpaces = [];
 		console.log(answerSpaces);
 		var letters = blankWord.length;
 
-// Checking to see if the User's guess matches a valid letter in the phrase.
-document.onkeyup = function(event) {
+// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
+	document.onkeyup = function(event) {
         var userGuess = event.key;
-        console.log(userGuess);
-	    for (var j = 0; j < blankWord.length; j++) {
-	    	if (userGuess === blankWord[j]) {
-	    		answerSpaces[j] = userGuess;
-	    		letters--;
-	    		console.log(answerSpaces);
-	    	}
-	    }
+        for (var k = 0; k < alphabet.length; k++) {
+        	if (userGuess === alphabet[k]){
+        		console.log(userGuess);
+			    for (var j = 0; j < blankWord.length; j++) {
+			    	if (userGuess === blankWord[j]) {
+			    		answerSpaces[j] = userGuess;
+			    		letters--;
+			    		console.log(answerSpaces);
+			    	}
+			    }
+			}
+		}
+
 	}
