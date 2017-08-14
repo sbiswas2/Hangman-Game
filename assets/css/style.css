@@ -3,5 +3,9 @@
 	border: 2px solid black;
 	margin: 0 auto;
 	float: left;
-	
+
+}
+
+.jumbotron {
+	border: 5px solid red;
 }
