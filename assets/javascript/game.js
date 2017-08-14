@@ -61,6 +61,7 @@ var playGame = {
 							document.getElementById("loss-section").innerHTML = losses;
 							document.getElementById("final-result").innerHTML = "You Win!";
 							console.log ("You win");
+							 //stop the execution of function
 							}
 
 				} else {
@@ -70,6 +71,7 @@ var playGame = {
 						document.getElementById("loss-section").innerHTML = losses;
 						document.getElementById("final-result").innerHTML = "You Lose!";
 						console.log("You Lose");
+						 //stop the execution of function
 						}
 		}
 	}
