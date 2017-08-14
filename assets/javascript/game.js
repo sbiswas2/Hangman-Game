@@ -57,6 +57,8 @@ var playGame = {
 					} else {
 							wins++;
 							console.log(wins);
+							document.getElementById("win-section").innerHTML = wins;
+							document.getElementById("loss-section").innerHTML = losses;
 							document.getElementById("final-result").innerHTML = "You Win!";
 							console.log ("You win");
 							}
@@ -64,6 +66,8 @@ var playGame = {
 				} else {
 						losses++;
 						console.log(losses);
+						document.getElementById("win-section").innerHTML = wins;
+						document.getElementById("loss-section").innerHTML = losses;
 						document.getElementById("final-result").innerHTML = "You Lose!";
 						console.log("You Lose");
 						}
@@ -73,13 +77,18 @@ var playGame = {
 
 buttonStart.onclick = function() {
  	console.log("Start");
+ 	document.getElementById("win-section").innerHTML = wins;
+	document.getElementById("loss-section").innerHTML = losses;
  	document.getElementById("spaces").innerHTML = answerSpaces;
  	playGame.matching();		
 };
 
 buttonNew.onclick = function() {
-     console.log("New");
-     playGame.matching();
+    console.log("New");
+    document.getElementById("win-section").innerHTML = wins;
+	document.getElementById("loss-section").innerHTML = losses;
+    document.getElementById("spaces").innerHTML = answerSpaces;
+    playGame.matching();
 };
 
 
