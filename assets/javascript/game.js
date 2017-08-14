@@ -23,10 +23,17 @@ var answerSpaces = [];
 
 var lettersGuessed = [];
 
+// ADD RESET FUNCTION HERE AFTER GLOBAL VARIABLES
+
+
 // Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
 var playGame = {
 	matching: function() {
 		document.onkeyup = function(event) {
+			// If statement to check if we have already won or lost before starting a new game.
+			// If guesses does not equal 0 and letters does not equal 0, then proceed with game.
+			// If it does equal 0, then RETURN and exit out of game function.
+
 		    var userGuess = event.key;
 		    userGuess = userGuess.toLowerCase();
 				if (guesses > 0) {
@@ -55,14 +62,15 @@ var playGame = {
 							}
 						}	
 					} else {
+							
 							wins++;
 							console.log(wins);
 							document.getElementById("win-section").innerHTML = wins;
 							document.getElementById("loss-section").innerHTML = losses;
 							document.getElementById("final-result").innerHTML = "You Win!";
 							console.log ("You win");
-							 //stop the execution of function
-							}
+							// create reset function???
+							} 
 
 				} else {
 						losses++;
@@ -71,7 +79,7 @@ var playGame = {
 						document.getElementById("loss-section").innerHTML = losses;
 						document.getElementById("final-result").innerHTML = "You Lose!";
 						console.log("You Lose");
-						 //stop the execution of function
+						// create reset function???
 						}
 		}
 	}
