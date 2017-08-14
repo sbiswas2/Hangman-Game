@@ -6,6 +6,9 @@ var wins = 0;
 var losses = 0;
 var guesses = 9;
 
+var buttonStart = document.getElementById("start");
+var buttonNew = document.getElementById("new");
+
 // Computer randomly chooses a choice from the phrase array for User to guess.
 var blankWord = phrase[Math.floor(Math.random() * phrase.length)];
 
@@ -20,13 +23,14 @@ var answerSpaces = [];
 
 var lettersGuessed = [];
 
-	// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
-	document.onkeyup = function(event) {
-        var userGuess = event.key;
-        userGuess = userGuess.toLowerCase();
-
-		if (guesses > 0) {
-		        if (letters > 0) {
+// Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
+var playGame = {
+	matching: function() {
+		document.onkeyup = function(event) {
+		    var userGuess = event.key;
+		    userGuess = userGuess.toLowerCase();
+				if (guesses > 0) {
+			        if (letters > 0) {
 				        //check alphabet
 				        for (var k = 0; k < alphabet.length; k++) {
 				        	if (userGuess === alphabet[k]){
@@ -43,24 +47,36 @@ var lettersGuessed = [];
 								    		letters--;
 								    		console.log(answerSpaces);
 								    		console.log(letters);
-								    		}
-								    	}
-								}
-							}	
+							    		}
+						    		}
+							}
+						}	
 					} else {
-						wins++;
-						console.log(wins);
-						document.getElementById("spaces").innerHTML = "You Win!";
-						console.log ("You win");
-					}
+							wins++;
+							console.log(wins);
+							document.getElementById("spaces").innerHTML = "You Win!";
+							console.log ("You win");
+							}
 
-			} else {
-				losses++;
-				console.log(losses);
-				document.getElementById("spaces").innerHTML = "You Lose!";
-				console.log("You Lose");
-			}
-		};
+				} else {
+						losses++;
+						console.log(losses);
+						document.getElementById("spaces").innerHTML = "You Lose!";
+						console.log("You Lose");
+						}
+		}
+	}
+};
+
+buttonStart.onclick = function() {
+ 	console.log("Start");
+ 	playGame.matching();		
+};
+
+buttonNew.onclick = function() {
+     console.log("New");
+     playGame.matching();
+};
 
 
 

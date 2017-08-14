@@ -8,4 +8,10 @@
 
 .jumbotron {
 	border: 5px solid red;
+	padding-bottom: 20px;
+}
+
+.btn, .btn-danger{
+	min-width: 200px;
+	margin-top: 20px;
 }
