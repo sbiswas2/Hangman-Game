@@ -37,8 +37,10 @@ var playGame = {
 				        		console.log(userGuess);
 				        		lettersGuessed.push(userGuess);
 				        		console.log(lettersGuessed);
+				        		document.getElementById("letter-choice").innerHTML = lettersGuessed;
 				        		guesses--;
 				        		console.log(guesses);
+				        		document.getElementById("count").innerHTML = guesses;
 				        		alphabet.splice(alphabet.indexOf(userGuess), 1);		
 					    			//check phrase
 								    for (var j = 0; j < blankWord.length; j++) {
@@ -46,6 +48,7 @@ var playGame = {
 								    		answerSpaces[j] = userGuess;
 								    		letters--;
 								    		console.log(answerSpaces);
+								    		document.getElementById("spaces").innerHTML = answerSpaces;
 								    		console.log(letters);
 							    		}
 						    		}
@@ -54,14 +57,14 @@ var playGame = {
 					} else {
 							wins++;
 							console.log(wins);
-							document.getElementById("spaces").innerHTML = "You Win!";
+							document.getElementById("final-result").innerHTML = "You Win!";
 							console.log ("You win");
 							}
 
 				} else {
 						losses++;
 						console.log(losses);
-						document.getElementById("spaces").innerHTML = "You Lose!";
+						document.getElementById("final-result").innerHTML = "You Lose!";
 						console.log("You Lose");
 						}
 		}
@@ -70,6 +73,7 @@ var playGame = {
 
 buttonStart.onclick = function() {
  	console.log("Start");
+ 	document.getElementById("spaces").innerHTML = answerSpaces;
  	playGame.matching();		
 };
 
