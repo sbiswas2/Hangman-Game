@@ -75,7 +75,7 @@ var playGame = {
 							document.getElementById("final-result").innerHTML = "You Win!";
 							console.log ("You win");
 							// create reset function???
-							} 
+							}
 
 				} else {
 						losses++;
