@@ -3,7 +3,9 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var phrase = ["champion", "chicago", "bulls", "hangtime", "airness", "jordan"];
 var wins = 0;
+//var wins2 = wins + 1;
 var losses = 0;
+//var losses2 = wins + 1;
 var guesses = 9;
 
 var buttonStart = document.getElementById("start");
@@ -35,6 +37,7 @@ var playGame = {
 			// If it does equal 0, then RETURN and exit out of game function.
 			
 			//if (guesses !== 0) {
+			//if (wins === wins2 || losses === losses2) {
 
 		    var userGuess = event.key;
 		    userGuess = userGuess.toLowerCase();
@@ -49,7 +52,7 @@ var playGame = {
 				        		document.getElementById("letter-choice").innerHTML = lettersGuessed;
 				        		guesses--;
 				        		console.log(guesses);
-				        		document.getElementById("count").innerHTML = guesses;
+				        		document.getElementById("count").innerHTML = guesses + 1;
 				        		alphabet.splice(alphabet.indexOf(userGuess), 1);		
 					    			//check phrase
 								    for (var j = 0; j < blankWord.length; j++) {
@@ -64,9 +67,7 @@ var playGame = {
 							}
 						}	
 					} else {
-							
 							wins++;
-							guesses = 0;
 							document.getElementById("count").innerHTML = guesses;
 							console.log(wins);
 							document.getElementById("win-section").innerHTML = wins;
@@ -83,6 +84,7 @@ var playGame = {
 						document.getElementById("win-section").innerHTML = wins;
 						document.getElementById("loss-section").innerHTML = losses;
 						document.getElementById("final-result").innerHTML = "You Lose!";
+						document.getElementById("correct-answer").innerHTML = "Correct Answer: " + blankWord;
 						console.log("You Lose");
 						// create reset function???
 						}
