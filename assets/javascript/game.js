@@ -33,6 +33,8 @@ var playGame = {
 			// If statement to check if we have already won or lost before starting a new game.
 			// If guesses does not equal 0 and letters does not equal 0, then proceed with game.
 			// If it does equal 0, then RETURN and exit out of game function.
+			
+			//if (guesses !== 0) {
 
 		    var userGuess = event.key;
 		    userGuess = userGuess.toLowerCase();
@@ -64,6 +66,8 @@ var playGame = {
 					} else {
 							
 							wins++;
+							guesses = 0;
+							document.getElementById("count").innerHTML = guesses;
 							console.log(wins);
 							document.getElementById("win-section").innerHTML = wins;
 							document.getElementById("loss-section").innerHTML = losses;
@@ -74,6 +78,7 @@ var playGame = {
 
 				} else {
 						losses++;
+						document.getElementById("count").innerHTML = guesses;
 						console.log(losses);
 						document.getElementById("win-section").innerHTML = wins;
 						document.getElementById("loss-section").innerHTML = losses;
@@ -81,6 +86,7 @@ var playGame = {
 						console.log("You Lose");
 						// create reset function???
 						}
+			//} return;
 		}
 	}
 };
@@ -100,6 +106,5 @@ buttonNew.onclick = function() {
     document.getElementById("spaces").innerHTML = answerSpaces;
     playGame.matching();
 };
-
 
 
