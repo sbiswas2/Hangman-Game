@@ -3,9 +3,9 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var phrase = ["champion", "chicago", "bulls", "hangtime", "airness", "jordan"];
 var wins = 0;
-//var wins2 = wins + 1;
+var wins2 = false;
 var losses = 0;
-//var losses2 = wins + 1;
+var losses2 = false;
 var guesses = 9;
 
 var buttonStart = document.getElementById("start");
@@ -93,20 +93,8 @@ var playGame = {
 	}
 };
 
-buttonStart.onclick = function() {
- 	console.log("Start");
- 	document.getElementById("win-section").innerHTML = wins;
-	document.getElementById("loss-section").innerHTML = losses;
- 	document.getElementById("spaces").innerHTML = answerSpaces;
- 	playGame.matching();		
-};
-
-buttonNew.onclick = function() {
-    console.log("New");
-    document.getElementById("win-section").innerHTML = wins;
-	document.getElementById("loss-section").innerHTML = losses;
-    document.getElementById("spaces").innerHTML = answerSpaces;
-    playGame.matching();
-};
+document.onkeyup = function(event) {
+	playGame.matching();
+}
 
 
