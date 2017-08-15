@@ -3,9 +3,9 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var phrase = ["champion", "chicago", "bulls", "hangtime", "airness", "jordan"];
 var wins = 0;
-var wins2 = false;
+//var wins2 = false;
 var losses = 0;
-var losses2 = false;
+//var losses2 = false;
 var guesses = 9;
 
 var buttonStart = document.getElementById("start");
@@ -26,7 +26,23 @@ var answerSpaces = [];
 var lettersGuessed = [];
 
 // ADD RESET FUNCTION HERE AFTER GLOBAL VARIABLES
-
+var reset = {
+	newGame: function() {
+			var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
+			var guesses = 10;
+			console.log(guesses);
+			var blankWord = phrase[Math.floor(Math.random() * phrase.length)];
+			console.log(blankWord);
+			var answerSpaces = [];
+			for (var i = 0; i < blankWord.length; i++) {
+					answerSpaces[i] = "_";
+				}
+				console.log(answerSpaces);
+				var letters = blankWord.length;
+			var lettersGuessed = [];
+	}
+};
 
 // Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
 var playGame = {
@@ -74,7 +90,7 @@ var playGame = {
 							document.getElementById("loss-section").innerHTML = losses;
 							document.getElementById("final-result").innerHTML = "You Win!";
 							console.log ("You win");
-							// create reset function???
+							reset.newGame(); //reset variables// create reset function???
 							}
 
 				} else {
@@ -86,7 +102,7 @@ var playGame = {
 						document.getElementById("final-result").innerHTML = "You Lose!";
 						document.getElementById("correct-answer").innerHTML = "Correct Answer: " + blankWord;
 						console.log("You Lose");
-						// create reset function???
+						reset.newGame(); //reset variables// create reset function???
 						}
 			//} return;
 		}
