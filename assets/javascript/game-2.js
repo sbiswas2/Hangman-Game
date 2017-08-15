@@ -29,27 +29,20 @@ var lettersGuessed = [];
 // Create function that starts new game
 //var reset = {
 	function newGame() {
-			var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+			alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
-			var guesses = 10;
+			guesses = 10;
 			console.log(guesses);
-			var blankWord = phrase[Math.floor(Math.random() * phrase.length)];
+			blankWord = phrase[Math.floor(Math.random() * phrase.length)];
 			console.log(blankWord);
-			var answerSpaces = [];
+			answerSpaces = [];
 			for (var i = 0; i < blankWord.length; i++) {
 					answerSpaces[i] = "_";
 				}
 				console.log(answerSpaces);
-			var letters = blankWord.length;
+			letters = blankWord.length;
 			console.log(letters);
-			var lettersGuessed = [];
-			//returning values of variables
-			return alphabet;
-			return guesses;
-			return blankWord;
-			return answerSpaces;
-			return letters;
-			return lettersGuessed;
+			lettersGuessed = [];
 	};
 //};
 
