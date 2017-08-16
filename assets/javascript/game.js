@@ -2,7 +2,7 @@
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var phrase = ["champion", "chicago", "bulls", "hangtime", "airness", "jordan", "shoes", "player", "basketball",
-				"dunk","fly", "jumpman", "points", "defense", "sport", "dribble", "crossover", "brand"];
+				"dunk","fly", "jumpman", "points", "defense", "sport", "dribble", "crossover", "brand", "shot"];
 var wins = 0;
 var losses = 0;
 var guesses = 10;
@@ -64,7 +64,7 @@ document.onkeyup = function(event) {
     	console.log(userGuess);
     //must set validate variable to false every time a button is entered, otherwise it will stay true.
     validate = false;
-
+    document.getElementById("jordan").src = "assets/images/jumpman.jpg";
         //check alphabet
         for (var k = 0; k < alphabet.length; k++) {
         	if (userGuess === alphabet[k]){
@@ -113,6 +113,7 @@ document.onkeyup = function(event) {
 			//calculate win
 		if (letters === 0) {
 			wins++;
+			document.getElementById("jordan").src = "assets/images/celebrate.gif";
 			document.getElementById("final-result").innerHTML = "You Win! Correct Answer: " + blankWord;
 			document.getElementById("count").innerHTML = guesses;
 			document.getElementById("win-section").innerHTML = wins;
@@ -123,6 +124,7 @@ document.onkeyup = function(event) {
 			//calculate loss
 		} else if (guesses === 0) {
 			losses++;
+			document.getElementById("jordan").src = "assets/images/shakehead.gif";
 			document.getElementById("final-result").innerHTML = "You Lose! Correct Answer: " + blankWord;
 			document.getElementById("count").innerHTML = guesses;
 			document.getElementById("win-section").innerHTML = wins;

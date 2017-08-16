@@ -9,7 +9,8 @@
 
 .jumbotron {
 	border: 5px solid red;
-	padding-bottom: 20px;
+	padding-bottom: 0px;
+	padding-top: 0px;
 }
 
 .btn, .btn-danger{
