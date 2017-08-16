@@ -1,116 +1,135 @@
-// Assigning variables
+// Assigning global variables
 var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
 				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var phrase = ["champion", "chicago", "bulls", "hangtime", "airness", "jordan"];
+var phrase = ["champion", "chicago", "bulls", "hangtime", "airness", "jordan", "shoes", "player", "basketball",
+				"dunk","fly", "jumpman", "points", "defense", "sport", "dribble", "crossover", "brand"];
 var wins = 0;
-//var wins2 = false;
 var losses = 0;
-//var losses2 = false;
-var guesses = 9;
+var guesses = 10;
 
-var buttonStart = document.getElementById("start");
-var buttonNew = document.getElementById("new");
+// Use for checking letters and to calculate guesses
+var validate = false;
+var checker = false;
 
 // Computer randomly chooses a choice from the phrase array for User to guess.
 var blankWord = phrase[Math.floor(Math.random() * phrase.length)];
-
 
 // Creating an empty array to fill with underscores to match number of letters in word.
 var answerSpaces = [];
 	for (var i = 0; i < blankWord.length; i++) {
 			answerSpaces[i] = "_";
 		}
-		console.log(answerSpaces);
+			console.log(answerSpaces);
 		var letters = blankWord.length;
 
+// An empty array to for letters that are guessed by user so they do not guess them again.
 var lettersGuessed = [];
 
-// ADD RESET FUNCTION HERE AFTER GLOBAL VARIABLES
-var reset = {
-	newGame: function() {
-			var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
-				"r", "s", "t", "u", "v", "w", "x", "y", "z"];
-			var guesses = 10;
+// Create function that starts new game
+function newGame() {
+		alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+			"r", "s", "t", "u", "v", "w", "x", "y", "z"];
+		lettersGuessed = [];
+		guesses = 10;
 			console.log(guesses);
-			var blankWord = phrase[Math.floor(Math.random() * phrase.length)];
+		//calculate new word again when reset
+		blankWord = phrase[Math.floor(Math.random() * phrase.length)];
 			console.log(blankWord);
-			var answerSpaces = [];
-			for (var i = 0; i < blankWord.length; i++) {
-					answerSpaces[i] = "_";
-				}
-				console.log(answerSpaces);
-				var letters = blankWord.length;
-			var lettersGuessed = [];
-	}
+		answerSpaces = [];
+		//calculate answer spaces again when reset
+		for (var i = 0; i < blankWord.length; i++) {
+				answerSpaces[i] = "_";
+			}
+			console.log(answerSpaces);
+
+		document.getElementById("spaces").innerHTML = answerSpaces.join(" ");
+		document.getElementById("letter-choice").innerHTML = lettersGuessed.join(" ");
+		document.getElementById("count").innerHTML = guesses;
+		document.getElementById("correct-answer").innerHTML = " ";
+		//used for determining how many letters are left in word
+		letters = blankWord.length;
+			console.log(letters);
+		
+		validate = false;
+		checker = false;
 };
+
+// Start new game before entering a key
+newGame();
 
 // Checking to see if the User's guess matches alphabet, then a valid letter in the phrase.
-var playGame = {
-	matching: function() {
-		document.onkeyup = function(event) {
-			// If statement to check if we have already won or lost before starting a new game.
-			// If guesses does not equal 0 and letters does not equal 0, then proceed with game.
-			// If it does equal 0, then RETURN and exit out of game function.
-			
-			//if (guesses !== 0) {
-			//if (wins === wins2 || losses === losses2) {
-
-		    var userGuess = event.key;
-		    userGuess = userGuess.toLowerCase();
-				if (guesses > 0) {
-			        if (letters > 0) {
-				        //check alphabet
-				        for (var k = 0; k < alphabet.length; k++) {
-				        	if (userGuess === alphabet[k]){
-				        		console.log(userGuess);
-				        		lettersGuessed.push(userGuess);
-				        		console.log(lettersGuessed);
-				        		document.getElementById("letter-choice").innerHTML = lettersGuessed;
-				        		guesses--;
-				        		console.log(guesses);
-				        		document.getElementById("count").innerHTML = guesses + 1;
-				        		alphabet.splice(alphabet.indexOf(userGuess), 1);		
-					    			//check phrase
-								    for (var j = 0; j < blankWord.length; j++) {
-								    	if (userGuess === blankWord[j]) {
-								    		answerSpaces[j] = userGuess;
-								    		letters--;
-								    		console.log(answerSpaces);
-								    		document.getElementById("spaces").innerHTML = answerSpaces;
-								    		console.log(letters);
-							    		}
-						    		}
-							}
-						}	
-					} else {
-							wins++;
-							document.getElementById("count").innerHTML = guesses;
-							console.log(wins);
-							document.getElementById("win-section").innerHTML = wins;
-							document.getElementById("loss-section").innerHTML = losses;
-							document.getElementById("final-result").innerHTML = "You Win!";
-							console.log ("You win");
-							reset.newGame(); //reset variables// create reset function???
-							}
-
-				} else {
-						losses++;
-						document.getElementById("count").innerHTML = guesses;
-						console.log(losses);
-						document.getElementById("win-section").innerHTML = wins;
-						document.getElementById("loss-section").innerHTML = losses;
-						document.getElementById("final-result").innerHTML = "You Lose!";
-						document.getElementById("correct-answer").innerHTML = "Correct Answer: " + blankWord;
-						console.log("You Lose");
-						reset.newGame(); //reset variables// create reset function???
-						}
-			//} return;
-		}
-	}
-};
-
 document.onkeyup = function(event) {
-	playGame.matching();
-}
+    var userGuess = event.key;
+    userGuess = userGuess.toLowerCase();
+    	console.log(userGuess);
+    //must set validate variable to false every time a button is entered, otherwise it will stay true.
+    validate = false;
 
+        //check alphabet
+        for (var k = 0; k < alphabet.length; k++) {
+        	if (userGuess === alphabet[k]){
+        		lettersGuessed.push(userGuess);
+        			console.log(lettersGuessed);
+        		document.getElementById("letter-choice").innerHTML = lettersGuessed.join(" ");
+        		// when a letter is entered, set validate to true to verify the letter is in the alphabet
+        		validate = true;
+        		// must set checker to false each time a button is entered otherwise it will stay true
+        		checker = false;
+        		// remove letter guessed from alphabet
+        		alphabet.splice(alphabet.indexOf(userGuess), 1);		
+			    			
+			    			//check phrase
+						    for (var j = 0; j < blankWord.length; j++) {
+						    	if (userGuess === blankWord[j]) {
+						    		answerSpaces[j] = userGuess;
+						    		letters--; //used to calculate if user will lose
+						    		checker = true; //used to calculate guesses
+						    		document.getElementById("spaces").innerHTML = answerSpaces.join(" ");
+						    			console.log(answerSpaces);
+						    			console.log(letters);
+					    		}
+				    		}
+					}
+				}
+
+		// series of IF statement to determine if a button entered should be registered as a guess
+			// check if button entered is a valid letter
+			if (validate === false) {
+				document.getElementById("final-result").innerHTML = "Type a Letter Not Chosen";
+			} else if (validate === true) {
+				document.getElementById("final-result").innerHTML = "Keep Guessing";
+			}
+			// check if user guess is in the word
+			if (validate === true && checker === false) {
+				guesses--;
+				document.getElementById("count").innerHTML = guesses;
+				document.getElementById("final-result").innerHTML = "Wrong Guess";
+					console.log(guesses);
+			} else if (validate === true && checker === true) {
+				document.getElementById("final-result").innerHTML = "Correct Guess";
+			}
+
+		// used to calculate is user wins or loses the game
+			//calculate win
+		if (letters === 0) {
+			wins++;
+			document.getElementById("final-result").innerHTML = "You Win! Correct Answer: " + blankWord;
+			document.getElementById("count").innerHTML = guesses;
+			document.getElementById("win-section").innerHTML = wins;
+			document.getElementById("loss-section").innerHTML = losses;
+				console.log ("You win");
+				console.log(wins);
+			newGame(); //reset variables
+			//calculate loss
+		} else if (guesses === 0) {
+			losses++;
+			document.getElementById("final-result").innerHTML = "You Lose! Correct Answer: " + blankWord;
+			document.getElementById("count").innerHTML = guesses;
+			document.getElementById("win-section").innerHTML = wins;
+			document.getElementById("loss-section").innerHTML = losses;
+				console.log("You Lose");
+				console.log(losses);
+			newGame(); //reset variables
+		}
+};
 
