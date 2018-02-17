@@ -13,7 +13,8 @@ This app is your basic Hangman game with a Michael Jordan theme, so it is called
 ## Installation
 
 1.  Clone repo
-2.  Open index.html in browser
+2.  Navigate into project
+3.  Open index.html in browser
 
 ## Live Demo
 
