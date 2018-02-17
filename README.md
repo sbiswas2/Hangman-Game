@@ -13,7 +13,7 @@ This app is your basic Hangman game with a Michael Jordan theme, so it is called
 ## Installation
 
 1.  Clone repo
-2.  Navigate into project
+2.  Navigate into project `cd Jumpman`
 3.  Open index.html in browser
 
 ## Live Demo
